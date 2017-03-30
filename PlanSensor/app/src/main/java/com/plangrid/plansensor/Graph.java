@@ -6,8 +6,11 @@ import android.util.AttributeSet;
 import com.robinhood.spark.SparkAdapter;
 import com.robinhood.spark.SparkView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Graph extends SparkView {
-    private int[] data = new int[]{};
+    private List<Integer> data = new ArrayList<>();
     private final SparkAdapter adapter = new GraphAdapter();
 
     public Graph(Context context, AttributeSet attrs) {
@@ -18,9 +21,9 @@ public class Graph extends SparkView {
     /**
      * Set the data for the graph to display
      *
-     * @param data - An int[] containing all the datapoints the graph should display
+     * @param data - A List<Integer> containing all the data points the graph should display
      */
-    public void setData(int[] data) {
+    public void setData(List<Integer> data) {
         this.data = data;
         adapter.notifyDataSetChanged();
     }
@@ -29,17 +32,17 @@ public class Graph extends SparkView {
 
         @Override
         public int getCount() {
-            return data.length;
+            return data.size();
         }
 
         @Override
         public Object getItem(int index) {
-            return data[index];
+            return data.get(index);
         }
 
         @Override
         public float getY(int index) {
-            return data[index];
+            return data.get(index);
         }
     }
 
