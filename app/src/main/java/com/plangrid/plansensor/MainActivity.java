@@ -14,7 +14,7 @@ import io.reactivex.disposables.CompositeDisposable;
 public class MainActivity extends Activity {
     private static final int MAX_VALUES = 10;
     private Sensor sensor;
-    private CompositeDisposable disposables;
+    private CompositeDisposable disposables = new CompositeDisposable();;
     private LengthLimitedList<Integer> values;
 
     @BindView(R.id.graph)
@@ -33,7 +33,6 @@ public class MainActivity extends Activity {
     @Override
     protected void onResume() {
         super.onResume();
-        disposables = new CompositeDisposable();
         disposables.add(sensor.getSensorObservable()
                               .observeOn(AndroidSchedulers.mainThread())
                               .subscribe(dataPoint -> {
@@ -45,8 +44,7 @@ public class MainActivity extends Activity {
 
     @Override
     protected void onPause() {
-        disposables.dispose();
-        disposables = null;
+        disposables.clear();
         super.onPause();
     }
 
