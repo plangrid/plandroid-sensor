@@ -1,9 +1,10 @@
 package com.plangrid.plansensor;
 
-import android.app.Activity;
+import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Button;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -11,34 +12,47 @@ import butterknife.OnClick;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 
-public class MainActivity extends Activity {
-    private static final int MAX_VALUES = 10;
-    private Sensor sensor;
-    private CompositeDisposable disposables = new CompositeDisposable();;
-    private LengthLimitedList<Integer> values;
+public class MainActivity extends AppCompatActivity {
+    private CompositeDisposable disposables = new CompositeDisposable();
     @BindView(R.id.graph)
     Graph graph;
+
+    @BindView(R.id.record)
+    protected Button record;
+
+    @BindView(R.id.play)
+    protected Button play;
+
+    private GraphViewModel graphViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-
-        sensor = new Sensor();
-        values = new LengthLimitedList<>(MAX_VALUES);
+        graphViewModel = ViewModelProviders.of(this).get(GraphViewModel.class);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        disposables.add(sensor.getSensorObservable()
-                              .observeOn(AndroidSchedulers.mainThread())
-                              .subscribe(dataPoint -> {
-                                  Log.v(getClass().getName(), "New Data Point: " + dataPoint.value);
-                                  values.add(dataPoint.value);
-                                  graph.setData(values);
-                              }));
+        disposables.add(graphViewModel.getGraphData().subscribe(dataPoints -> graph.setData(dataPoints)));
+        disposables.add(graphViewModel.getState().observeOn(AndroidSchedulers.mainThread()).subscribe(sensorState -> {
+            switch(sensorState) {
+                case LIVE:
+                    record.setEnabled(true);
+                    play.setEnabled(true);
+                    break;
+                case PLAYING:
+                    record.setEnabled(false);
+                    play.setEnabled(false);
+                    break;
+                case RECORDING:
+                    record.setEnabled(true);
+                    play.setEnabled(false);
+                    break;
+            }
+        }));
     }
 
     @Override
@@ -49,11 +63,11 @@ public class MainActivity extends Activity {
 
     @OnClick(R.id.record)
     protected void onClickRecord(View view) {
-        // TODO: 9/14/17 Implement recording
+        graphViewModel.toggleRecording();
     }
 
     @OnClick(R.id.play)
     protected void onClickPlay(View view) {
-        // TODO: 9/14/17 Implement playback
+        graphViewModel.playRecording();
     }
 }
