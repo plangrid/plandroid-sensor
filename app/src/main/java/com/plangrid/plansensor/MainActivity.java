@@ -5,8 +5,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
@@ -21,7 +19,6 @@ public class MainActivity extends AppCompatActivity {
     private CompositeDisposable disposables = new CompositeDisposable();;
     private LengthLimitedList<Integer> values;
 
-    @BindView(R.id.graph)
     Graph graph;
 
     // The graph view to populate with sensor data
@@ -32,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ButterKnife.bind(this);
+        graph = findViewById(R.id.graph);
 
         sensor = new Sensor();
         values = new LengthLimitedList<>(MAX_VALUES);
