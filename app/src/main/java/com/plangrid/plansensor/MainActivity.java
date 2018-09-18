@@ -5,6 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
@@ -12,16 +14,16 @@ import io.reactivex.disposables.CompositeDisposable;
 public class MainActivity extends AppCompatActivity {
     private static final int MAX_VALUES = 10;
     private Sensor sensor;
-    private CompositeDisposable disposables = new CompositeDisposable();;
+    private CompositeDisposable disposables = new CompositeDisposable();
     private LengthLimitedList<Integer> values;
 
-    Graph graph;
+    @BindView(R.id.graph) Graph graph;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        graph = findViewById(R.id.graph);
+        ButterKnife.bind(this);
 
         sensor = new Sensor();
         values = new LengthLimitedList<>(MAX_VALUES);
@@ -45,11 +47,13 @@ public class MainActivity extends AppCompatActivity {
         super.onPause();
     }
 
+    @SuppressWarnings("unused")
     @OnClick(R.id.record)
     protected void onClickRecord(View view) {
         // TODO: 9/14/17 Implement recording
     }
 
+    @SuppressWarnings("unused")
     @OnClick(R.id.play)
     protected void onClickPlay(View view) {
         // TODO: 9/14/17 Implement playback
