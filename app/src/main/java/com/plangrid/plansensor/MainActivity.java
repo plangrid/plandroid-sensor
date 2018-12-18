@@ -3,19 +3,16 @@ package com.plangrid.plansensor;
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 
-import butterknife.OnClick;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 
 public class MainActivity extends Activity {
     private static final int MAX_VALUES = 10;
     private Sensor sensor;
-    private CompositeDisposable disposables = new CompositeDisposable();;
+    private CompositeDisposable disposables = new CompositeDisposable();
     private LengthLimitedList<Integer> values;
-
-    Graph graph;
+    private Graph graph;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,13 +42,4 @@ public class MainActivity extends Activity {
         super.onPause();
     }
 
-    @OnClick(R.id.record)
-    protected void onClickRecord(View view) {
-        // TODO: 9/14/17 Implement recording
-    }
-
-    @OnClick(R.id.play)
-    protected void onClickPlay(View view) {
-        // TODO: 9/14/17 Implement playback
-    }
 }
