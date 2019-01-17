@@ -9,7 +9,7 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Sensor {
-    private static final String SENSOR_HOST = "http://my-sensor-api.herokuapp.com/";
+    private static final String SENSOR_HOST = "https://2lczqtled3.execute-api.us-east-1.amazonaws.com/default/";
     private final Retrofit retrofit = new Retrofit.Builder()
             .baseUrl(SENSOR_HOST)
             .addConverterFactory(GsonConverterFactory.create())
