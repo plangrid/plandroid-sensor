@@ -21,7 +21,9 @@ public class MainActivity extends AppCompatActivity {
 
         ButterKnife.bind(this);
 
-        // display data in the graph by passing it a list of data points
+        // Display data in the graph by passing it a list of data points.
         graph.setData(Arrays.asList(1, 5, 6, 4, 2, 1, 1, 3, 8));
+
+        // TODO(1): Listen to the sensor and display the last ten values in the graph.
     }
 }
