@@ -5,7 +5,6 @@ apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion 29
-    buildToolsVersion '29.0.2'
     defaultConfig {
         applicationId "com.plangrid.plansensor"
         minSdkVersion 16
@@ -34,8 +33,6 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'androidx.core:core:1.2.0-alpha04'
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'com.robinhood.spark:spark:1.1.2'
     testImplementation 'junit:junit:4.12'
@@ -43,18 +40,14 @@ dependencies {
     // Some popular third party libraries
     // Use as many or as few as you want
     // Feel free to add more
-    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0-alpha04'
-    implementation 'androidx.lifecycle:lifecycle-reactivestreams:2.2.0-alpha04'
-    implementation 'com.jakewharton:butterknife:10.2.0'
-    kapt 'com.jakewharton:butterknife-compiler:10.2.0'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+    implementation 'androidx.lifecycle:lifecycle-reactivestreams:2.2.0'
     implementation 'com.squareup.retrofit2:retrofit:2.6.1'
     implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
     implementation 'com.squareup.retrofit2:converter-jackson:2.6.1'
     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.6.1'
-    implementation 'com.squareup.okhttp3:okhttp:4.1.1'
-    implementation 'io.reactivex:rxjava:1.3.8'
-    implementation 'io.reactivex:rxandroid:1.2.1'
+    implementation 'com.squareup.okhttp3:okhttp:4.2.2'
     implementation 'io.reactivex.rxjava2:rxjava:2.2.11'
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
-    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.3.50'
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.3.61'
 }

@@ -9,11 +9,11 @@ import com.robinhood.spark.SparkView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Graph extends SparkView {
+public class GraphView extends SparkView {
     private List<Integer> data = new ArrayList<>();
     private final SparkAdapter adapter = new GraphAdapter();
 
-    public Graph(Context context, AttributeSet attrs) {
+    public GraphView(Context context, AttributeSet attrs) {
         super(context, attrs);
         setAdapter(adapter);
     }

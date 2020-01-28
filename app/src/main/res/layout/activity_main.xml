@@ -12,7 +12,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.plangrid.plansensor.MainActivity">
 
-    <com.plangrid.plansensor.Graph
+    <com.plangrid.plansensor.GraphView
         android:id="@+id/graph"
         android:layout_width="match_parent"
         android:layout_height="0dp"
