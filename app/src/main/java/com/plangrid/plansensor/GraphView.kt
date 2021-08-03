@@ -6,11 +6,17 @@ import com.robinhood.spark.SparkAdapter
 import com.robinhood.spark.SparkView
 import java.util.*
 
-class GraphView(context: Context?, attrs: AttributeSet?) :
-    SparkView(context, attrs) {
-    private var data: List<Int> = ArrayList()
+class GraphView @JvmOverloads constructor(
+    context: Context,
+    attrs: AttributeSet? = null,
+    defStyle: Int = 0
+) : SparkView(context, attrs) {
 
-    override fun getAdapter(): SparkAdapter = GraphAdapter()
+    init {
+        adapter = GraphAdapter()
+    }
+
+    private var data: List<Int> = ArrayList()
 
     /**
      * Set the data for the graph to display
@@ -32,9 +38,5 @@ class GraphView(context: Context?, attrs: AttributeSet?) :
         override fun getY(index: Int): Float {
             return data[index].toFloat()
         }
-    }
-
-    init {
-        setAdapter(adapter)
     }
 }
