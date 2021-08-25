@@ -17,9 +17,8 @@ class Sensor {
         }
 
     private fun locallyGeneratedRandomNumbers(): Flow<Int> = flow {
-        var counter = 0
         while (true) {
-            emit(counter++)
+            emit(random.nextInt())
             delay(1_000)
         }
     }
