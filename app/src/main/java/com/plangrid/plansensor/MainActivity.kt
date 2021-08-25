@@ -46,18 +46,6 @@ class MainActivity : AppCompatActivity() {
 
         // TODO(1): Listen to the sensor and display the last ten values in the graph.
 
-//        disposables.add(
-//            rxSensor
-//                .sensorStream
-//                .subscribeOn(Schedulers.io())
-//                .observeOn(AndroidSchedulers.mainThread())
-//                .subscribe {
-//                    Log.v("RxSensor", "Value: $it")
-//                    values.add(it)
-//                    graphView.setData(values)
-//                }
-//        )
-
         lifecycleScope
             .launch {
                 flowSensor
@@ -68,6 +56,18 @@ class MainActivity : AppCompatActivity() {
                         graphView.setData(values)
                     }
             }
+
+//        disposables.add( // TODO: uncomment for Rx option
+//            rxSensor
+//                .sensorStream
+//                .subscribeOn(Schedulers.io())
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe {
+//                    Log.v("RxSensor", "Value: $it")
+//                    values.add(it)
+//                    graphView.setData(values)
+//                }
+//        )
     }
 
     override fun onDestroy() {
