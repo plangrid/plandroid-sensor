@@ -19,7 +19,6 @@ class Sensor {
     private fun locallyGeneratedRandomNumbers(): Observable<Int> {
         return Observable.interval(1, TimeUnit.SECONDS)
             .map { random.nextInt() }
-            .observeOn(AndroidSchedulers.mainThread())
     }
 
     private fun serverRetrievedSensorValues(): Observable<Int> {
