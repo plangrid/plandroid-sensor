@@ -20,11 +20,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private val values = LengthLimitedList<Int>(MAX_VALUES)
+    private val flowSensor = FlowSensor()
 
 //    private val rxSensor = RxSensor()  // TODO: uncomment for Rx option
 //    private val disposables = CompositeDisposable()  // TODO: uncomment for Rx option
-
-    private val flowSensor = FlowSensor()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
