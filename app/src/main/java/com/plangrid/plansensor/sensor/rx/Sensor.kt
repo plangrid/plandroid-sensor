@@ -1,7 +1,6 @@
 package com.plangrid.plansensor.sensor.rx
 
 import io.reactivex.Observable
-import io.reactivex.android.schedulers.AndroidSchedulers
 import java.util.*
 import java.util.concurrent.TimeUnit
 
