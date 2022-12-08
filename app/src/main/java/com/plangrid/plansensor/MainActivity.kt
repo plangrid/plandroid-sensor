@@ -13,7 +13,7 @@ class MainActivity : AppCompatActivity() {
         val graphView: GraphView = findViewById(R.id.graph)
         graphView.setData(listOf(1, 5, 6, 4, 2, 1, 1, 3, 8))
 
-        // TODO(1): Listen to the sensor and display the last ten values in the graph.
+        // TODO(1): Listen to the sensor and display a running list of the most recent ten values in the graph.
 
     }
 }
