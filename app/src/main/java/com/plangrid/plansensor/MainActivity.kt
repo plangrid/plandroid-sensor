@@ -31,9 +31,7 @@ class MainActivity : AppCompatActivity() {
 
         // Display data in the graph by passing it a list of data points.
         val graphView: GraphView = findViewById(R.id.graph)
-        graphView.setData(listOf(1, 5, 6, 4, 2, 1, 1, 3, 8))
 
-        // TODO(1): Listen to the sensor and display a running list of the most recent ten values in the graph.
         val record = findViewById<Button>(R.id.record)
         record.setOnClickListener {
             // TODO: Implement recording
@@ -42,8 +40,6 @@ class MainActivity : AppCompatActivity() {
         play.setOnClickListener {
             // TODO: Implement playback
         }
-
-        // TODO(1): Listen to the sensor and display the last ten values in the graph.
 
         lifecycleScope
             .launch {
