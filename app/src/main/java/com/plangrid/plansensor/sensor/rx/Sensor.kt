@@ -1,5 +1,6 @@
 package com.plangrid.plansensor.sensor.rx
 
+import com.plangrid.plansensor.DataPoint
 import io.reactivex.Observable
 import java.util.*
 import java.util.concurrent.TimeUnit
@@ -20,7 +21,7 @@ class Sensor {
             .map { random.nextInt() }
     }
 
-    private fun serverRetrievedSensorValues(): Observable<Int> {
+    private fun serverRetrievedSensorValues(): Observable<DataPoint> {
         throw UnsupportedOperationException("Please implement.")
     }
 

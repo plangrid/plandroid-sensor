@@ -1,5 +1,6 @@
 package com.plangrid.plansensor.sensor.coroutine
 
+import com.plangrid.plansensor.DataPoint
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -23,7 +24,7 @@ class Sensor {
         }
     }
 
-    private fun serverRetrievedSensorValues(): Flow<Int> {
+    private fun serverRetrievedSensorValues(): Flow<DataPoint> {
         throw UnsupportedOperationException("Please implement.")
     }
 
