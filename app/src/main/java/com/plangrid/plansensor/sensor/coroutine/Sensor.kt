@@ -12,8 +12,6 @@ class Sensor {
 
     val sensorStream: Flow<Int>
         get() {
-            // TODO(2): Replace with hitting an endpoint for a value every second.
-            // return serverRetrievedSensorValues();
             return locallyGeneratedRandomNumbers()
         }
 
@@ -22,10 +20,6 @@ class Sensor {
             emit(random.nextInt())
             delay(1_000)
         }
-    }
-
-    private fun serverRetrievedSensorValues(): Flow<DataPoint> {
-        throw UnsupportedOperationException("Please implement.")
     }
 
 }

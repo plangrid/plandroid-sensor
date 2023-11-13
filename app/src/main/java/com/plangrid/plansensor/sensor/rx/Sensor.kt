@@ -11,18 +11,12 @@ class Sensor {
 
     val sensorStream: Observable<Int>
         get() {
-            // TODO(2): Replace with hitting an endpoint for a value every second.
-            // return serverRetrievedSensorValues();
             return locallyGeneratedRandomNumbers()
         }
 
     private fun locallyGeneratedRandomNumbers(): Observable<Int> {
         return Observable.interval(1, TimeUnit.SECONDS)
             .map { random.nextInt() }
-    }
-
-    private fun serverRetrievedSensorValues(): Observable<DataPoint> {
-        throw UnsupportedOperationException("Please implement.")
     }
 
 }
