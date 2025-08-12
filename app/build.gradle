@@ -3,6 +3,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 
 android {
+    namespace = "com.plangrid.plansensor"
     compileSdkVersion 33
     defaultConfig {
         applicationId "com.plangrid.plansensor"
@@ -22,6 +23,10 @@ android {
 
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_17.toString()
+    }
+
+    kotlin {
+        jvmToolchain(17)
     }
 
     //noinspection GroovyMissingReturnStatement
